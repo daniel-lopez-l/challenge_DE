@@ -10,8 +10,12 @@ def execute_query_for_memory(client: bigquery.Client, query:str) -> Any:
     Returns: 
         result of query
     """
-    query_job = client.query(query)
-    query_job.result()
+    try:
+        query_job = client.query(query)
+        query_job.result()
 
-    results = query_job.result()
-    return results
+        results = query_job.result()
+        return results
+    except Exception as e:
+        print(f"An error ocurred: {e}")
+        return None
