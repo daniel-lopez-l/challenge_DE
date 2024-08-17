@@ -1,4 +1,4 @@
-from typing import Tuple, Any
+from typing import List, Tuple, Any
 import cProfile
 import pstats
 import time
@@ -18,12 +18,9 @@ def execute_time_query(client: bigquery.Client, query: str) -> Tuple[Any, float]
     
     start_time = time.time()
     
-    try:
-        query_job = client.query(query)
-        query_job.result()
-        results = query_job.result()
-    except Exception as e:
-        return None, 0.0
+    query_job = client.query(query)
+    query_job.result()
+    results = query_job.result()
     
     end_time = time.time()
     execution_time = end_time - start_time
