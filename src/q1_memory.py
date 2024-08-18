@@ -3,6 +3,8 @@ from google.cloud import bigquery
 
 from memory_profiler import profile
 
+
+
 @profile
 def q1_memory(client: bigquery.Client, query: str) ->  List[Tuple[str, str]]:
 <<<<<<< HEAD
